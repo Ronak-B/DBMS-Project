@@ -1,0 +1,25 @@
+/*#main {*/
+/*    column-count: 4;*/
+/*    column-gap: 0.4rem;*/
+/*}*/
+
+/*#main #card {*/
+/*    margin: 0.3rem;*/
+    
+/*}*/
+
+body {
+    background-image: linear-gradient(rgb(41,50,60),rgb(72,85,99));
+}
+
+.card-title {
+     margin-bottom: 0.5rem;
+}
+
+.card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    padding: 0.9rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.4rem;
+}

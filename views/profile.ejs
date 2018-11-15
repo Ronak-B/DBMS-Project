@@ -1,0 +1,54 @@
+<% include partials/header.ejs %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+
+<div class="jumbotron">
+  <h1 class="display-4">My library</h1>
+  <a href="/paymentHistory" class="nav-link float-right">Payment History</a>
+</div>
+<div class="container" style="margin-top:40px;">
+   <%if(!results[0]) { %>
+        <h2 style="margin-left:40%;color:white;">Wow such empty!!!</h2>
+    <% }%>
+<button class="btn btn-warning btn-lg" id="b" style="margin-left:45%;margin-bottom:5px;">Stop music</button>
+<div class="card-columns" id="main">
+    <% results.forEach(function(song,i){ %>
+        <div class="card shadow-sm" id="card">
+          <img class="card-img-top" src=<%= song.image %>>  
+          <div class="card-body">
+            <h6 class="card-title"><%= song.title %><button id="<%=i%>"class="btn btn-sm btn-dark float-right" style="margin-left:20px;margin-bottom:10px;">Play</button></h6>
+            <form class="form-inline" method="post" action="/gift/<%=song.songID %>"><input class="form-control" type="text" placeholder="username" name="username" style="width:50%;"><button class="btn btn-sm btn-dark" type="submit" style="display:inline;margin-left:3px;">Gift</button></form>
+         </div>
+        </div>
+     <% }); %> 
+     
+</div>
+</div>
+ <script>
+        $( "html" ).ready(function() {
+            $(".toggle").fadeTo(0,0);
+         });
+        $('.toggle').hover(function(e){
+                $(e.target).fadeTo("fast",1);
+        },function(e){
+                $(e.target).fadeTo("fast",0);
+        });
+     
+ </script>
+<script>
+    var parent=document.querySelector("#main");
+     var dataArray =<%- JSON.stringify(results) %>
+     var x = document.createElement("AUDIO");
+     parent.addEventListener("click",play,false); 
+     function play(e) { 
+         if(e.target!==e.currentTarget) {
+            x.src=dataArray[parseInt(e.target.id)].url;
+            x.play();
+         } 
+        e.stopPropagation(); 
+     }
+     $('#b').on('click',function(){
+         x.src="";
+         x.play();
+     });
+     
+</script>

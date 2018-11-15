@@ -1,0 +1,33 @@
+<% include ./partials/header %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+<div class="container" style="margin-top:40px;">
+<div class="card-columns" id="main">
+    <% results.forEach(function(song,i){ %>
+        <div class="card shadow-sm" id="card">
+          <img class="card-img-top" src=<%= song.image %>>  
+          <div class="card-body">
+            <h6 class="card-title"><%= song.title %><form style="display:inline;" method="post" action="/cart/<%=song.songID %>"></span><button name="addCart" class="btn btn-sm btn-dark float-right" style="margin-left:20px;margin-bottom:10px;">Add To Cart</button></form></h6>
+         </div>
+         <div class="card-img-overlay toggle" style="height:88%;background:rgba(52,58,64,0.85);">
+             <h3 class="price" style="color:white;margin-top:50%;"><%=song.price%> $</h3>
+             <p style="color:white;">Artist: <%=song.artistName%></p>
+             <p style="color:white;">Album: <%=song.albumName%></p>
+             <p style="color:white;">Genre: <%=song.genreName%></p>
+         </div>
+        </div>
+     <% }); %>  
+</div>
+</div>
+<script>
+        $( "html" ).ready(function() {
+            $(".toggle").fadeTo(0,0);
+         });
+        $('.toggle').hover(function(e){
+                $(e.target).fadeTo("fast",1);
+        },function(e){
+                $(e.target).fadeTo("fast",0);
+        });
+     
+ </script>
+
+<% include ./partials/footer %>

@@ -1,0 +1,21 @@
+<% include partials/header.ejs %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+<div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" method="post" action="/signup">
+                <input type="text" class="form-control" placeholder="Username" name="username" required autofocus>
+                <input type="text" class="form-control" placeholder="FirstName" name="first_name" required>
+                <input type="text" class="form-control" placeholder="LastName" name="last_name" required >
+                <input type="email" class="form-control" placeholder="Email ID" name="email" required>
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                <button class="btn btn-lg btn-dark btn-block btn-signin" type="submit">Sign in</button>
+                <% if (message.length > 0) { %>
+                    <div class="alert alert-success col-sm-12"><%= message %></div>
+                <% } %>
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+    </div>
+<% include partials/footer.ejs %>

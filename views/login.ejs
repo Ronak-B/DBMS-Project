@@ -1,0 +1,36 @@
+<% include partials/header.ejs %>
+<link rel="stylesheet" type="text/css" href="/stylesheets/login.css">
+<!--<div class="blurred-box">
+  <!--  you dont need the user-login-box html  -->
+  <!--  for demo purposes only and its shit  -->
+  <!--<div class="user-login-box">-->
+  <!--  <span class="user-icon"></span>-->
+  <!--  <div class="user-name">Gilfoyle</div>-->
+  <!--  <input class="user-password" type="text" />-->
+  <!--</div>-->
+<div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" method="post" action="/login">
+                <input type="text" class="form-control" placeholder="Username" name="username" required autofocus>
+                <input type="password" class="form-control" placeholder="Password" name="password" required>
+                <button class="btn btn-lg btn-dark btn-block btn-signin" type="submit">Sign in <i class="fas fa-sign-in-alt"></i></button>
+                <div class="form-group">
+                                    <div class="col-md-12 control">
+                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                            Don't have an account!
+                                        <a href="/signup">
+                                            Sign Up Here
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>   
+                <% if (message.length > 0) { %>
+                    <div class="alert alert-success col-sm-12"><%= message %></div>
+                <% } %>
+            </form><!-- /form -->
+        </div><!-- /card-container -->
+    </div>
+<% include partials/footer.ejs %>
